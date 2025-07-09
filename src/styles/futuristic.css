@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: linear-gradient(120deg, #f7faff 0%, #e3e9f0 100%);
+  color: #232526;
+  min-height: 100vh;
+  margin: 0;
+  transition: background 0.3s, color 0.3s;
+}
+
+nav {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 16px 32px;
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 2px 16px 0 #b0c4de44;
+  margin-bottom: 32px;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+nav a {
+  color: #3a7bd5;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: color 0.2s;
+}
+nav a:hover {
+  color: #232526;
+}
+
+h1, h3, label {
+  color: #232526;
+}
+
+.note-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.note-item {
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px 0 #b0c4de44;
+  padding: 24px;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.note-item:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 32px 0 #3a7bd544;
+}
+.note-item h3 a {
+  color: #3a7bd5;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.note-item h3 a:hover {
+  color: #232526;
+}
+.note-item small {
+  color: #7a7a7a;
+}
+.note-item p {
+  color: #444;
+}
+
+button {
+  background: linear-gradient(90deg, #3a7bd5 0%, #00d2ff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 22px;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px 0 #b0c4de44;
+  transition: background 0.2s, transform 0.1s;
+}
+button:hover {
+  background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+  transform: scale(1.05);
+}
+button[style*="color: red"] {
+  background: linear-gradient(90deg, #ff5f5f 0%, #ff7f7f 100%);
+}
+
+input, textarea {
+  width: 100%;
+  background: #f7faff;
+  color: #232526;
+  border: 1.5px solid #3a7bd5;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  font-size: 1rem;
+  transition: border 0.2s, box-shadow 0.2s, background 0.3s, color 0.3s;
+}
+input:focus, textarea:focus {
+  border: 1.5px solid #00d2ff;
+  outline: none;
+  box-shadow: 0 0 0 2px #3a7bd544;
+}
+
+form label {
+  font-weight: 700;
+  margin-bottom: 4px;
+  display: block;
+}
+
+/* Snackbar/Toast */
+.snackbar {
+  position: fixed;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+  background: #e3e9f0ee;
+  color: #232526;
+  padding: 16px 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px 0 #b0c4de88;
+  font-size: 1.1rem;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, bottom 0.3s, background 0.3s, color 0.3s;
+}
+.snackbar.show {
+  opacity: 1;
+  pointer-events: auto;
+  bottom: 60px;
+}
+
+/* Dark mode toggle */
+.dark-toggle {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: #3a7bd5;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.dark-toggle:hover {
+  color: #232526;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .note-list {
+    grid-template-columns: 1fr;
+  }
+  nav {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 8px;
+  }
+}
+
+/* DARK MODE (override) */
+body[style*='#181a1b'] {
+  background: linear-gradient(120deg, #181a1b 0%, #232526 100%) !important;
+  color: #f3f3f3 !important;
+}
+nav[style], body[style*='#181a1b'] nav {
+  background: rgba(30, 30, 40, 0.9) !important;
+  box-shadow: 0 2px 16px 0 #0004 !important;
+}
+h1, h3, label, .note-item h3 a, .dark-toggle {
+  color: #fff !important;
+}
+.note-item {
+  background: rgba(40, 44, 52, 0.95) !important;
+  box-shadow: 0 4px 24px 0 #0006 !important;
+}
+.note-item small {
+  color: #b0b0b0 !important;
+}
+.note-item p {
+  color: #e0e0e0 !important;
+}
+input, textarea {
+  background: #232526 !important;
+  color: #fff !important;
+  border: 1.5px solid #7fbcff !important;
+}
+.snackbar {
+  background: #232526ee !important;
+  color: #fff !important;
+  box-shadow: 0 4px 24px 0 #0008 !important;
+}
+nav a {
+  color: #7fbcff !important;
+}
+nav a:hover {
+  color: #fff !important;
+} 
